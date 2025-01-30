@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title></title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Estilos para el video de fondo */
@@ -44,11 +44,14 @@
     </style>
 </head>
 <body>
-   
+    <!-- Video de fondo -->
+    <video id="videoFondo" autoplay loop muted>
+        <source src="recursos/whyvideo.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
 
     <div class="container">
-        <h1>¿Quieres saber algo? 🥰</h1>
-        <p>Presiona "Sí" para empezar</p>
+        <h1>Melissa ¿Quieres ser mi Valentín?🥰</h1>
         <div class="buttons">
             <button id="siBtn">Sí😍</button>
             <button id="noBtn">No🥺</button>
@@ -60,7 +63,7 @@
 
     <!-- Reproductor de audio -->
     <audio id="backgroundMusic" loop>
-        <source src="recursos/ipman.mp3" type="audio/mpeg">
+        <source src="recursos/quiero.mp3" type="audio/mpeg">
         Tu navegador no soporta la reproducción de audio.
     </audio>
 
@@ -101,7 +104,7 @@
 
         // Función para el botón "Sí"
         document.getElementById("siBtn").addEventListener("click", function() {
-            window.location.href = "pregunta.html"; // Redirige a la página "pregunta.html"
+            window.location.href = "te-amo.html"; // Redirige a la página "Te amo"
         });
 
         // Función para el botón "No"
@@ -110,8 +113,8 @@
             var randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             var randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             noBtn.style.position = "absolute";
-            noBtn.style.left = randomX + "px";
-            noBtn.style.top = randomY + "px";
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
         });
     </script>
 </body>
