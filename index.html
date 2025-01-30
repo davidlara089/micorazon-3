@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el video de fondo */
+        #videoFondo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Para que esté detrás del contenido */
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px; /* Ajusta el tamaño del corazón */
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video de fondo -->
+    <video id="videoFondo" autoplay loop muted>
+        <source src="recursos/whyvideo.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+    </video>
+
+    <div class="container">
+        <h1>Melissa ¿Quieres ser mi Valentín?🥰</h1>
+        <div class="buttons">
+            <button id="siBtn">Sí😍</button>
+            <button id="noBtn">No🥺</button>
+        </div>
+    </div>
+
+    <!-- Corazones flotantes -->
+    <div class="hearts" id="heartsContainer"></div>
+
+    <!-- Reproductor de audio -->
+    <audio id="backgroundMusic" loop>
+        <source src="recursos/quiero.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+
+    <script>
+        // Función para crear corazones
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.getElementById('heartsContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Crear corazones cada medio segundo
+        setInterval(createHeart, 500);
+
+        // Intentar reproducir automáticamente al cargar la página
+        document.addEventListener("DOMContentLoaded", function() {
+            var audio = document.getElementById("backgroundMusic");
+            audio.play().catch(function(error) {
+                // Si el navegador bloquea la reproducción automática, mostrar un mensaje
+                console.log("La reproducción automática fue bloqueada. Haz clic en la página para reproducir.");
+            });
+        });
+
+        // Reproducir música al hacer clic en cualquier parte de la página
+        document.body.addEventListener("click", function() {
+            var audio = document.getElementById("backgroundMusic");
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+
+        // Función para el botón "Sí"
+        document.getElementById("siBtn").addEventListener("click", function() {
+            window.location.href = "te-amo.html"; // Redirige a la página "Te amo"
+        });
+
+        // Función para el botón "No"
+        document.getElementById("noBtn").addEventListener("click", function() {
+            var noBtn = document.getElementById("noBtn");
+            var randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            var randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = "absolute";
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        });
+    </script>
+</body>
+</html>
