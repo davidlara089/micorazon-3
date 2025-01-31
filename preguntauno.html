@@ -3,22 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Inicio</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Estilos para la imagen GIF de fondo */
         body {
-            background: url('recursos/whyvideo.gif') no-repeat center center/cover;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            padding: 20px;
-            color: white;
+            background: url('recursos/babyvideo.gif') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .buttons {
@@ -37,7 +28,7 @@
 
         .heart {
             position: absolute;
-            font-size: 20px;
+            font-size: 20px; /* Ajusta el tamaño del corazón */
             animation: float 5s infinite ease-in-out;
         }
 
@@ -49,7 +40,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Melissa ¿Quieres ser mi Valentín?🥰</h1>
+        <h1>¿Quieres saber algo? 🥰</h1>
+        <p>Presiona "Sí" para empezar</p>
         <div class="buttons">
             <button id="siBtn">Sí😍</button>
             <button id="noBtn">No🥺</button>
@@ -61,7 +53,7 @@
 
     <!-- Reproductor de audio -->
     <audio id="backgroundMusic" loop>
-        <source src="recursos/quiero.mp3" type="audio/mpeg">
+        <source src="recursos/baby.mpeg" type="audio/mpeg">
         Tu navegador no soporta la reproducción de audio.
     </audio>
 
@@ -101,7 +93,7 @@
 
         // Función para el botón "Sí"
         document.getElementById("siBtn").addEventListener("click", function() {
-            window.location.href = "te-amo.html";
+            window.location.href = "pregunta.html";
         });
 
         // Función para el botón "No"
@@ -110,8 +102,8 @@
             var randomX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             var randomY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             noBtn.style.position = "absolute";
-            noBtn.style.left = `${randomX}px`;
-            noBtn.style.top = `${randomY}px`;
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
         });
     </script>
 </body>
